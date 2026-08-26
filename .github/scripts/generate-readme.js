@@ -60,7 +60,7 @@ function formatRepoLine(repo) {
   const desc = repo.description ? ` — ${repo.description}` : "";
   const stars = repo.stargazers_count ? ` ⭐ ${repo.stargazers_count}` : "";
   const updated = new Date(repo.pushed_at).toISOString().slice(0, 10);
-  return `- **[${repo.full_name}](${repo.html_url})**${desc}${stars} _(updated ${updated})_`;
+  return `- **[${repo.name}](${repo.html_url})**${desc}${stars} _(updated ${updated})_`;
 }
 
 async function main() {
