@@ -8,9 +8,6 @@ We use the mathematics of shape, dynamics, and high-dimensional data to find it.
 
 ## Repositories
 
-Below is an automatically updated list of our members'
-public repositories tagged `algebraicsystemsbiology`.
-
 <!-- REPO-LIST:START -->
 - **[desr](https://github.com/ofloveandhate/desr)** — A Python library for reducing differential equations and dynamical systems. _(updated 2026-06-09)_
 <!-- REPO-LIST:END -->
