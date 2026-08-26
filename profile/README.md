@@ -12,7 +12,7 @@ Below is an automatically updated list of our members'
 public repositories tagged `algebraicsystemsbiology`.
 
 <!-- REPO-LIST:START -->
-_No repos tagged `algebraicsystemsbiology` yet. Add the topic to a repo's "About" section to have it show up here._
+- **[ofloveandhate/desr](https://github.com/ofloveandhate/desr)** — A Python library for reducing differential equations and dynamical systems. _(updated 2026-06-09)_
 <!-- REPO-LIST:END -->
 
 <!-- 

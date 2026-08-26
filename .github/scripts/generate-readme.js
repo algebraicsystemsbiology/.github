@@ -17,24 +17,35 @@ async function fetchAllTaggedRepos(topic) {
   let page = 1;
   let all = [];
 
-  while (true) {
-    const url = `https://api.github.com/search/repositories?q=topic:${encodeURIComponent(
-      topic
-    )}&sort=updated&order=desc&per_page=${perPage}&page=${page}`;
+  // NOTE: the search API excludes forks by default. Group members often tag a
+  // fork of an upstream project, so `fork:true` (= "forks *in addition to*
+  // sources", not "forks only") is required or those repos silently vanish.
+  const query = `topic:${topic} fork:true`;
 
-    const res = await fetch(url, {
-      headers: {
-        Accept: "application/vnd.github+json",
-        Authorization: TOKEN ? `Bearer ${TOKEN}` : undefined,
-        "X-GitHub-Api-Version": "2022-11-28",
-      },
-    });
+  const headers = {
+    Accept: "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+    "User-Agent": "algebraicsystemsbiology-readme-bot",
+  };
+  if (TOKEN) headers.Authorization = `Bearer ${TOKEN}`;
+
+  while (true) {
+    const url =
+      "https://api.github.com/search/repositories" +
+      `?q=${encodeURIComponent(query)}` +
+      `&sort=updated&order=desc&per_page=${perPage}&page=${page}`;
+
+    const res = await fetch(url, { headers });
 
     if (!res.ok) {
       throw new Error(`GitHub search failed: ${res.status} ${await res.text()}`);
     }
 
     const data = await res.json();
+    if (page === 1) {
+      console.log(`Query: ${query}`);
+      console.log(`total_count reported by GitHub: ${data.total_count}`);
+    }
     all = all.concat(data.items || []);
 
     if (!data.items || data.items.length < perPage) break;
@@ -57,6 +68,10 @@ async function main() {
 
   // Sort by most recently pushed
   repos.sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
+
+  for (const r of repos) {
+    console.log(`  found: ${r.full_name}${r.fork ? " (fork)" : ""}`);
+  }
 
   const lines =
     repos.length > 0
