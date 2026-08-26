@@ -8,17 +8,4 @@ We use the mathematics of shape, dynamics, and high-dimensional data to find it.
 
 ## Repositories
 
-<!-- REPO-LIST:START -->
 - **[desr](https://github.com/ofloveandhate/desr)** — A Python library for reducing differential equations and dynamical systems.
-<!-- REPO-LIST:END -->
-
-<!-- 
-**Want your repo listed here?** Add the topic `algebraicsystemsbiology` to it
-(Settings → General → "Topics", or the gear icon next to "About" on the repo
-page). It'll show up within a day.
- -->
- 
-<!-- 
-_This list is regenerated daily by a GitHub Action — see
-`.github/workflows/update-readme.yml`._
--->
