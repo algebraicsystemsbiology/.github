@@ -8,4 +8,6 @@ We use the mathematics of shape, dynamics, and high-dimensional data to find it.
 
 ## Repositories
 
+<!-- SOFTWARE:START -->
 - **[desr](https://github.com/ofloveandhate/desr)** — A Python library for reducing differential equations and dynamical systems.
+<!-- SOFTWARE:END -->
